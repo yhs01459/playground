@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import Article from "./components/article";
 
-function App() {
+const App = () => {
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchData = async () => {
+    const response = await fetch(
+      `https://newsapi.org/v2/top-headlines?country=us&apiKey=8cdb9a227dd546538b1a5b716f5f0cd5`
+    );
+    const json = await response.json();
+    setArticles(json.articles);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {loading ? (
+        <strong>loading...</strong>
+      ) : (
+        <div>
+          <h1>Movie Article !! </h1>
+          {articles.map((item) => (
+            <Article item={item} />
+          ))}
+        </div>
+      )}
     </div>
   );
-}
-
+};
 export default App;
