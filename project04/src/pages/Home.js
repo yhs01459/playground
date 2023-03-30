@@ -25,8 +25,8 @@ const Home = () => {
       ) : (
         <div>
           <h1>Movie Article !! </h1>
-          {articles.map((item) => (
-            <Article item={item} />
+          {articles.map((item, index) => (
+            <Article index={index} item={item} />
           ))}
         </div>
       )}
