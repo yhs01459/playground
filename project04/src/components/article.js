@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
 
-const Article = ({ index, item }) => {
+const Article = ({ item }) => {
   return (
-    <div key={index}>
-      <img src={item.urlToImage}></img>
+    <div key={item.rnum}>
       <h2>
-        <Link to={`/about/${index}`}>{item.title}</Link>
+        <Link to={`/about/${item.movieCd}`}>{item.movieNm}</Link>
       </h2>
-      <p>{index}</p>
-      <p>{item.description}</p>
     </div>
   );
 };

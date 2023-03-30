@@ -7,27 +7,34 @@ const About = () => {
   const [about, setAbout] = useState([]);
 
   const { id } = useParams();
-  console.log(id);
 
   const getAbout = async () => {
     const response = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=us&apiKey=8cdb9a227dd546538b1a5b716f5f0cd5?id=${id}`
+      `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=96c620953c4739e9cc8206f9da200112&targetDt=20230330`
     );
     const json = await response.json();
-    setAbout(json.about);
+    setAbout(json.boxOfficeResult.dailyBoxOfficeList);
+
     setLoading(false);
   };
 
   useEffect(() => {
     getAbout();
-  });
+  }, []);
 
   return (
     <div>
       {loading ? (
         <strong>"loading..."</strong>
       ) : (
-        <Abouts about={about}></Abouts>
+        <div>
+          {about.map((item) => {
+            console.log(item);
+            return item.movieCd === id ? (
+              <Abouts item={item} key={item.rnum}></Abouts>
+            ) : null;
+          })}
+        </div>
       )}
     </div>
   );
