@@ -25,8 +25,9 @@ const Home = () => {
       ) : (
         <div>
           <h1>My Movie App {Movies.length}</h1>
+
           {Movies.map((item) => {
-            return <Movie item={item}></Movie>;
+            return <Movie key={item.id} item={item}></Movie>;
           })}
         </div>
       )}
