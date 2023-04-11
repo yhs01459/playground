@@ -27,7 +27,6 @@ const Abouts = () => {
         <Load />
       ) : (
         <div>
-          <h1>About Page {}</h1>
           <About item={Abouts}></About>
         </div>
       )}
