@@ -10,7 +10,7 @@ const Home = () => {
       `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=96c620953c4739e9cc8206f9da200112&targetDt=20230330`
     );
     const json = await response.json();
-    setMobvies(json.boxOfficeResult.dailyBoxOfficeList);
+    setMovies(json.boxOfficeResult.dailyBoxOfficeList);
     setLoading(false);
   };
 
