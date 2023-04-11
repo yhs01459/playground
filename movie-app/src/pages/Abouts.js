@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import About from "../components/about";
+import Load from "../components/load";
 
 const Abouts = () => {
   const [Abouts, setAbouts] = useState([]);
@@ -23,7 +24,7 @@ const Abouts = () => {
   return (
     <div>
       {Loading ? (
-        <strong>Loading...</strong>
+        <Load />
       ) : (
         <div>
           <h1>About Page {}</h1>
