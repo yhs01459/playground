@@ -1,13 +1,13 @@
 import styled from "styled-components";
 const AboutBlock = styled.div`
-  background: {
-    z-index: -1;
-  }
-  img {
-    width: 100%;
-    height: 100%;
-    filter: brightness(50%);
-  }
+  z-index: -1;
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+
+  background-image: url(${(props) => props.background});
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const Show = styled.div`
@@ -15,7 +15,7 @@ const Show = styled.div`
   top: 25%;
   left: 25%;
   right: 25%;
-  z-index: 2;
+  z-index: 3;
 `;
 
 const ShortView = styled.div`
@@ -49,8 +49,7 @@ const Description = styled.div`
 
 const About = ({ item }) => {
   return (
-    <AboutBlock>
-      <img src={item.background_image}></img>
+    <AboutBlock background={item.background_image}>
       <Show>
         <ShortView>
           <ShortView_img>

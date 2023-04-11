@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import About from "../components/about";
 import Load from "../components/load";
+import styled from "styled-components";
+
+const AboutsBlock = styled.div`
+  z-index: 1;
+`;
 
 const Abouts = () => {
   const [Abouts, setAbouts] = useState([]);
@@ -22,7 +27,7 @@ const Abouts = () => {
   });
 
   return (
-    <div>
+    <AboutsBlock>
       {Loading ? (
         <Load />
       ) : (
@@ -30,7 +35,7 @@ const Abouts = () => {
           <About item={Abouts}></About>
         </div>
       )}
-    </div>
+    </AboutsBlock>
   );
 };
 
