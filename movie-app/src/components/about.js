@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 const AboutBlock = styled.div`
   z-index: -1;
   margin: 0 auto;
@@ -12,31 +13,32 @@ const AboutBlock = styled.div`
 
 const Show = styled.div`
   position: absolute;
+  border: 1rem solid black;
   top: 25%;
   left: 25%;
   right: 25%;
   z-index: 2;
   background-color: black;
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  border-radius: 3%;
-  box-shadow: 0.3rem 0.3rem 0.5rem 0.1rem black;
+  border-radius: 1%;
+  box-shadow: 0.15rem 0.15rem 0.5rem 0.3rem gray;
   opacity: 0.8;
+  .Description {
+    color: white;
+  }
 `;
-
 const ShortView = styled.div`
   display: flex;
   flex-direction: row;
   padding: 10px 10px;
 `;
-
 const ShortView_img = styled.div`
-  width: 100%;
-  height: 100%;
+  float: left;
+  width: 230px;
+  height: 345px;
 `;
-
 const ShortView_letters = styled.div`
   width: 250%;
-
   margin: 1rem 0 0 3rem;
   a {
     color: #61dafb;
@@ -46,10 +48,6 @@ const ShortView_letters = styled.div`
     font-size: 1.25rem;
     list-style: square;
   }
-`;
-
-const Description = styled.div`
-  color: white;
 `;
 
 const About = ({ item }) => {
@@ -71,7 +69,7 @@ const About = ({ item }) => {
           </ShortView_letters>
         </ShortView>
 
-        <Description>{item.description_full}</Description>
+        <div className="Description">{item.description_full}</div>
       </Show>
     </AboutBlock>
   );

@@ -67,6 +67,7 @@ const Loading_letter = styled.h1`
   top: 55%;
   left: 48%;
 `;
+
 const Load = () => {
   return (
     <div>
