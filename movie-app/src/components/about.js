@@ -15,7 +15,12 @@ const Show = styled.div`
   top: 25%;
   left: 25%;
   right: 25%;
-  z-index: 3;
+  z-index: 2;
+  background-color: black;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border-radius: 3%;
+  box-shadow: 0.3rem 0.3rem 0.5rem 0.1rem black;
+  opacity: 0.8;
 `;
 
 const ShortView = styled.div`
@@ -25,14 +30,14 @@ const ShortView = styled.div`
 `;
 
 const ShortView_img = styled.div`
-  float: left;
-  width: 210px;
-  height: 345px;
+  width: 100%;
+  height: 100%;
 `;
 
 const ShortView_letters = styled.div`
-  width: 70%;
-  margin: 20px 0 0 30px;
+  width: 250%;
+
+  margin: 1rem 0 0 3rem;
   a {
     color: #61dafb;
   }
