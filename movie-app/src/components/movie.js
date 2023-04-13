@@ -41,15 +41,42 @@ const ShortView_img = styled.div`
   }
 `;
 const ShortView_letters = styled.div`
+  text-decoration-line: none;
+
+  color: black;
+
   h2 {
   }
   p {
   }
 `;
+
+const ShortView_gernes = styled.div`
+  display: flex;
+  justify-content: flex-start;
+
+  p {
+    width: 2.5rem;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.2rem;
+    border: 0.2rem solid gray;
+
+    border-radius: 45%;
+    font-size: 0.15rem;
+    & + & {
+      margin-left: 1rem;
+    }
+  }
+`;
+
 const Movie = ({ item }) => {
+  const genres = item.genres.slice(0, item.genres.length);
+
   return (
     <MovieBlock>
-      <Link to={`/about/${item.id}`}>
+      <Link to={`/about/${item.id}`} style={{ textDecoration: "none" }}>
         <ShortView>
           <ShortView_img>
             <img src={item.medium_cover_image} url={item.url}></img>
@@ -62,6 +89,11 @@ const Movie = ({ item }) => {
                 ? `${item.summary.slice(0, 100)}...`
                 : item.summary}
             </p>
+            <ShortView_gernes>
+              {genres.map((g) => {
+                return <p key={g}>{g.toLowerCase()}</p>;
+              })}
+            </ShortView_gernes>
           </ShortView_letters>
         </ShortView>
       </Link>
