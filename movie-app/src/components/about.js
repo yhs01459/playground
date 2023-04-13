@@ -1,5 +1,32 @@
 import styled from "styled-components";
 
+const About = ({ item }) => {
+  return (
+    <AboutBlock background={item.background_image}>
+      <Show>
+        <ShortView>
+          <ShortView_img>
+            <img src={item.medium_cover_image}></img>
+          </ShortView_img>
+          <ShortView_letters>
+            <a href={item.url}>
+              <h2>{item.title_long}</h2>
+            </a>
+            <ul>
+              <li>Rating {item.rating}</li>
+              <li>Download {item.download_count}</li>
+            </ul>
+          </ShortView_letters>
+        </ShortView>
+
+        <div className="Description">{item.description_full}</div>
+      </Show>
+    </AboutBlock>
+  );
+};
+
+export default About;
+
 const AboutBlock = styled.div`
   z-index: -1;
   margin: 0 auto;
@@ -49,30 +76,3 @@ const ShortView_letters = styled.div`
     list-style: square;
   }
 `;
-
-const About = ({ item }) => {
-  return (
-    <AboutBlock background={item.background_image}>
-      <Show>
-        <ShortView>
-          <ShortView_img>
-            <img src={item.medium_cover_image}></img>
-          </ShortView_img>
-          <ShortView_letters>
-            <a href={item.url}>
-              <h2>{item.title_long}</h2>
-            </a>
-            <ul>
-              <li>Rating {item.rating}</li>
-              <li>Download {item.download_count}</li>
-            </ul>
-          </ShortView_letters>
-        </ShortView>
-
-        <div className="Description">{item.description_full}</div>
-      </Show>
-    </AboutBlock>
-  );
-};
-
-export default About;

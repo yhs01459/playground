@@ -1,5 +1,22 @@
 import styled from "styled-components";
 
+const Loading_letter = styled.h1`
+  position: absolute;
+  top: 55%;
+  left: 48%;
+`;
+
+const Load = () => {
+  return (
+    <div>
+      <LoadBox />
+      <Loading_letter>loading...</Loading_letter>
+    </div>
+  );
+};
+
+export default Load;
+
 const LoadBox = styled.div`
   position: absolute;
   top: 50%;
@@ -61,20 +78,3 @@ const LoadBox = styled.div`
     }
   }
 `;
-
-const Loading_letter = styled.h1`
-  position: absolute;
-  top: 55%;
-  left: 48%;
-`;
-
-const Load = () => {
-  return (
-    <div>
-      <LoadBox />
-      <Loading_letter>loading...</Loading_letter>
-    </div>
-  );
-};
-
-export default Load;

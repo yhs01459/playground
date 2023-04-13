@@ -4,10 +4,6 @@ import About from "../components/about";
 import Load from "../components/load";
 import styled from "styled-components";
 
-const AboutsBlock = styled.div`
-  z-index: 1;
-`;
-
 const Abouts = () => {
   const [Abouts, setAbouts] = useState([]);
   const [Loading, setLoading] = useState(true);
@@ -40,3 +36,7 @@ const Abouts = () => {
 };
 
 export default Abouts;
+
+const AboutsBlock = styled.div`
+  z-index: 1;
+`;
