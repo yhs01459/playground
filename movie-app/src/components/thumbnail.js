@@ -18,11 +18,10 @@ const ShortView = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
 
-  box-shadow: 0.3rem 0.5rem 1rem 0rem gray;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
   &:hover {
     transform: translateY(-0.5rem);
-    box-shadow: 0.3rem 0.5rem 3rem 0rem black;
+    box-shadow: 0.3rem 0.5rem 0.2rem 0.1rem black;
   }
 `;
 
