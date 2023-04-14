@@ -13,6 +13,7 @@ const Home = () => {
   const [Loading, setLoading] = useState(true);
 
   const topRatingGetMovies = async () => {
+    setLoading(true);
     const response = await fetch(
       `https://yts.mx/api/v2/list_movies.json?sort_by=rating&order_by=desc&limit=10`
     );
@@ -22,6 +23,7 @@ const Home = () => {
   };
 
   const titleGetMovies = async () => {
+    setLoading(true);
     const response = await fetch(
       `https://yts.mx/api/v2/list_movies.json?sort_by=title&order_by=desc&limit=10`
     );
@@ -31,6 +33,7 @@ const Home = () => {
   };
 
   const popularGetMovies = async () => {
+    setLoading(true);
     const response = await fetch(
       `https://yts.mx/api/v2/list_movies.json?sort_by=like_count&order_by=desc&limit=10`
     );
@@ -52,7 +55,6 @@ const Home = () => {
           <Load />
         ) : (
           <>
-            <Header>요긴 헤더랑꼐</Header>
             <HomeBlock>
               <h2>별점 순</h2>
               <Slider {...settings}>
@@ -73,7 +75,6 @@ const Home = () => {
                 })}
               </Slider>
             </HomeBlock>
-            <Footer>요긴 마지막</Footer>
           </>
         )}
       </div>
