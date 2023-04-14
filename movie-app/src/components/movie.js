@@ -4,12 +4,7 @@ import styled from "styled-components";
 const MovieBlock = styled.div`
   display: flex;
   border-radius: 1%;
-
   width: 500px;
-
-  & + & {
-    margin-top: 3rem;
-  }
 `;
 const ShortView = styled.div`
   background-color: white;

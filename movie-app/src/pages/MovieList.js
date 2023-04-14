@@ -7,17 +7,17 @@ import Load from "../components/load";
 
 const MovieListPageBox = styled.div`
   position: absolute;
-  left: 5%;
-  margin-top: 3rem;
-  display: gird;
-  grid-gap: 1rem;
+  left: 25%;
+  top: 25%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5rem;
 `;
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const { category } = useParams();
-  console.log(category);
 
   const getMovies = async () => {
     setLoading(true);
