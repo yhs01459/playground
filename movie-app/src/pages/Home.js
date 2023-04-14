@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import Movie from "../components/movie";
 import Load from "../components/load";
 import Slider from "react-slick";
+import Thumbnail from "../components/thumbnail";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -59,19 +59,19 @@ const Home = () => {
               <h2>별점 순</h2>
               <Slider {...settings}>
                 {topRatingMovies.map((item) => {
-                  return <Movie key={item.id} item={item}></Movie>;
+                  return <Thumbnail key={item.id} item={item}></Thumbnail>;
                 })}
               </Slider>
               <h2>이름 순</h2>
               <Slider {...settings}>
                 {titleMovies.map((item) => {
-                  return <Movie key={item.id} item={item}></Movie>;
+                  return <Thumbnail key={item.id} item={item}></Thumbnail>;
                 })}
               </Slider>
               <h2>좋아요 많은 순</h2>
               <Slider {...settings}>
                 {popularMovies.map((item) => {
-                  return <Movie key={item.id} item={item}></Movie>;
+                  return <Thumbnail key={item.id} item={item}></Thumbnail>;
                 })}
               </Slider>
             </HomeBlock>
@@ -96,18 +96,11 @@ const HomeBlock = styled.div`
     padding-right: 1rem;
   }
 `;
-const Header = styled.div`
-  background-color: #b179fc;
-`;
-const Footer = styled.div`
-  background-color: #b179fc;
-  margin-bottom: 0;
-`;
 
 const settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 4,
+  slidesToShow: 8,
   slidesToScroll: 4,
 };

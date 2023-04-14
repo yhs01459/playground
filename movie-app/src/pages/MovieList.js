@@ -7,7 +7,7 @@ import Load from "../components/load";
 
 const MovieListPageBox = styled.div`
   position: absolute;
-  left: 25%;
+  left: 15%;
   top: 25%;
   display: grid;
   grid-template-columns: 1fr 1fr;
