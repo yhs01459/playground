@@ -3,9 +3,13 @@ import styled from "styled-components";
 const Box = styled.div`
   display: flex;
   justify-content: flex-start;
-  border: 0.1rem solid blue;
+  font-size: 30px;
+  width: 200px;
+  height: 200px;
   p {
-    border: 0.1rem solid red;
+    border: 1rem solid red;
+    margin: 0;
+    padding: 0;
   }
 `;
 const ViewList = () => {

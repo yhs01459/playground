@@ -34,7 +34,7 @@ const ShortView_img = styled.div`
 const ShortView_letters = styled.div`
   text-decoration-line: none;
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 100px 1fr;
   color: black;
   padding: 0;
 
@@ -48,13 +48,24 @@ const ShortView_letters = styled.div`
     font-weight: 700;
   }
   .rating {
-    margin-top: 0;
-
     display: flex;
-    justify-content: center;
-    font-size: 0.5rem;
-    color: gray;
-    font-weight: 700;
+    height: 2rem;
+    .bi-star-fill {
+      display: flex;
+      justify-content: center;
+      margin-left: 1rem;
+      padding: 0.1rem;
+      color: gray;
+
+      font-size: 0.5rem;
+    }
+    span {
+      margin-top: 0;
+      font-size: 0.5rem;
+      padding-left: 0.1rem;
+      font-weight: 700;
+      color: gray;
+    }
   }
 `;
 
@@ -64,7 +75,7 @@ const Thumbnail = ({ item }) => {
       <Link to={`/about/${item.id}`} style={{ textDecoration: "none" }}>
         <ShortView>
           <ShortView_img>
-            <img src={item.medium_cover_image} url={item.url}></img>
+            <img src={item.medium_cover_image} alt="" url={item.url}></img>
           </ShortView_img>
           <ShortView_letters>
             <p className="title">
@@ -72,7 +83,10 @@ const Thumbnail = ({ item }) => {
                 ? `${item.title.slice(0, 30)}...`
                 : item.title}
             </p>
-            <p className="rating">{item.rating}</p>
+            <div className="rating">
+              <i class="bi bi-star-fill"></i>
+              <span>{item.rating}</span>
+            </div>
           </ShortView_letters>
         </ShortView>
       </Link>
