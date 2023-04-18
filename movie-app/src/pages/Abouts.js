@@ -14,13 +14,12 @@ const Abouts = () => {
       `https://yts.mx/api/v2/movie_details.json?movie_id=${id}`
     );
     const json = await response.json();
-
     setAbouts(json.data.movie);
     setLoading(false);
   };
   useEffect(() => {
     getAbouts();
-  });
+  }, []);
 
   return (
     <AboutsBlock>

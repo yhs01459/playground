@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import empty from "../empty001.png";
 
 const Movie = ({ item }) => {
   const genres = item.genres.slice(0, item.genres.length);
@@ -9,7 +10,7 @@ const Movie = ({ item }) => {
       <Link to={`/about/${item.id}`} style={{ textDecoration: "none" }}>
         <ShortView>
           <ShortView_img>
-            <img src={item.medium_cover_image} url={item.url}></img>
+            <img src={item.medium_cover_image} alt="" url={item.url}></img>
           </ShortView_img>
           <ShortView_letters>
             <h2>{item.title}</h2>
@@ -54,17 +55,21 @@ const ShortView = styled.div`
 `;
 
 const ShortView_img = styled.div`
+  background-image: url(${empty});
+  width: 150px;
+  height: 230px;
+
+  position: relative;
+  top: -3rem;
+  transition: all 0.4s ease;
+  box-shadow: 0.3rem 0.5rem 1rem -0.5rem gray;
+  &:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0.3rem 0.5rem 2rem -1.5rem black;
+  }
+
   img {
-    position: relative;
-    top: -3rem;
-    max-width: 150px;
     width: 100%;
-    box-shadow: 0.3rem 0.5rem 1rem -0.5rem gray;
-    transition: all 0.4s ease;
-    &:hover {
-      transform: translateY(-0.5rem);
-      box-shadow: 0.3rem 0.5rem 2rem -1.5rem black;
-    }
   }
 `;
 const ShortView_letters = styled.div`

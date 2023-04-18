@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import empty from "../empty001.png";
 
 const Thumbnail = ({ item }) => {
   return (
@@ -53,8 +54,11 @@ const ShortView = styled.div`
 `;
 
 const ShortView_img = styled.div`
+  width: 100%;
+  max-width: 150px;
+  height: 230px;
+  background-image: url(${empty});
   img {
-    width: 100%;
     max-width: 150px;
   }
 `;

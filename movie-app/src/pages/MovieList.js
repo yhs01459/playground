@@ -31,6 +31,7 @@ const MovieList = () => {
           <Load />
         ) : (
           <MovieListBlock>
+            {console.log(category)}
             <MovieListBox>
               {movies.map((item) => {
                 return <Movie item={item} key={item.id}></Movie>;
