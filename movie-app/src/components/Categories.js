@@ -1,40 +1,112 @@
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Home from "../pages/Home";
+
 const category = [
   {
     name: "Action",
-    text: "액션 영화",
+    text: "액션",
   },
   {
     name: "Comedy",
-    text: "코미디 영화",
+    text: "코미디",
   },
   {
     name: "Drama",
-    text: "감동 영화",
+    text: "감동",
+  },
+  {
+    name: "Thriller",
+    text: "스릴러",
+  },
+  {
+    name: "Sci-fi",
+    text: "SF",
   },
 ];
 
-const CategoriesBox = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  background-color: black;
-  padding: 1rem;
-`;
+const Categories = () => {
+  return (
+    <CategoriesBlock>
+      <CategoriesList>
+        <div className="categories-home">
+          <Link to={"/"} style={{ textDecoration: "none" }}>
+            홈{" "}
+          </Link>
+        </div>
+        <div className="categories-categories">
+          {category.map((c) => {
+            return (
+              <Category
+                key={c.name}
+                className={({ isActive }) => (isActive ? "active" : undefined)}
+                to={`${c.name}`}
+              >
+                {c.text}
+              </Category>
+            );
+          })}
+        </div>
+        <div className="categories-menu">
+          <button>&#9776;</button>
+        </div>
+      </CategoriesList>
+    </CategoriesBlock>
+  );
+};
+
+export default Categories;
 
 const CategoriesBlock = styled.div`
   display: flex;
-  justify-content: flex-start;
-  margin: 0;
+  justify-content: center;
+  padding-left: 2rem;
   width: 100%;
+  min-width: 320px;
+  height: 44px;
+  z-index: 9999;
 `;
+const CategoriesList = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0;
+  height: 100%;
+  width: 100vw;
+  max-width: 1024px;
+  box-sizing: border-box;
+
+  .categories-home {
+    width: 20%;
+  }
+  .categories-categories {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+  }
+  .categories-menu {
+    display: flex;
+    justify-content: end;
+    width: 10%;
+    padding-right: 2rem;
+  }
+  @media screen and (max-width: 800px) {
+    & {
+      justify-content: space-between;
+    }
+    .categories-home {
+    }
+    .categories-categories {
+      display: none;
+    }
+    .categories-Menu {
+      visibility: visible;
+    }
+  }
+`;
+
 const Category = styled(NavLink)`
   display: flex;
   align-items: center;
-  font-size: 1.125rem;
-  color: white;
   text-decoration: none;
 
   &:hover {
@@ -48,38 +120,3 @@ const Category = styled(NavLink)`
     margin-left: 3rem;
   }
 `;
-
-const HomeBlock = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding-left: 2rem;
-  font-size: 2rem;
-`;
-
-const Categories = () => {
-  return (
-    <CategoriesBox>
-      <HomeBlock>
-        <Link to={"/"} style={{ textDecoration: "none" }}>
-          Poland Flex
-        </Link>
-      </HomeBlock>
-      <CategoriesBlock>
-        {category.map((c) => {
-          return (
-            <Category
-              key={c.name}
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-              to={`${c.name}`}
-            >
-              {c.text}
-            </Category>
-          );
-        })}
-      </CategoriesBlock>
-    </CategoriesBox>
-  );
-};
-
-export default Categories;

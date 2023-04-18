@@ -1,6 +1,33 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+const Thumbnail = ({ item }) => {
+  return (
+    <ThumbnailBox>
+      <Link to={`/about/${item.id}`} style={{ textDecoration: "none" }}>
+        <ShortView>
+          <ShortView_img>
+            <img src={item.medium_cover_image} alt="" url={item.url}></img>
+          </ShortView_img>
+          <ShortView_letters>
+            <p className="title">
+              {item.title.length > 30
+                ? `${item.title.slice(0, 30)}...`
+                : item.title}
+            </p>
+            <div className="rating">
+              <i class="bi bi-star-fill"></i>
+              <span>{item.rating}</span>
+            </div>
+          </ShortView_letters>
+        </ShortView>
+      </Link>
+    </ThumbnailBox>
+  );
+};
+
+export default Thumbnail;
+
 const ThumbnailBox = styled.div`
   display: flex;
   border-radius: 1%;
@@ -68,30 +95,3 @@ const ShortView_letters = styled.div`
     }
   }
 `;
-
-const Thumbnail = ({ item }) => {
-  return (
-    <ThumbnailBox>
-      <Link to={`/about/${item.id}`} style={{ textDecoration: "none" }}>
-        <ShortView>
-          <ShortView_img>
-            <img src={item.medium_cover_image} alt="" url={item.url}></img>
-          </ShortView_img>
-          <ShortView_letters>
-            <p className="title">
-              {item.title.length > 30
-                ? `${item.title.slice(0, 30)}...`
-                : item.title}
-            </p>
-            <div className="rating">
-              <i class="bi bi-star-fill"></i>
-              <span>{item.rating}</span>
-            </div>
-          </ShortView_letters>
-        </ShortView>
-      </Link>
-    </ThumbnailBox>
-  );
-};
-
-export default Thumbnail;

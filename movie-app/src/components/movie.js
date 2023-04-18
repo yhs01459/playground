@@ -1,6 +1,38 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+const Movie = ({ item }) => {
+  const genres = item.genres.slice(0, item.genres.length);
+
+  return (
+    <MovieBlock>
+      <Link to={`/about/${item.id}`} style={{ textDecoration: "none" }}>
+        <ShortView>
+          <ShortView_img>
+            <img src={item.medium_cover_image} url={item.url}></img>
+          </ShortView_img>
+          <ShortView_letters>
+            <h2>{item.title}</h2>
+            <p>rating : {item.rating} / 10</p>
+            <p>
+              {item.summary.length > 100
+                ? `${item.summary.slice(0, 100)}...`
+                : item.summary}
+            </p>
+            <ShortView_gernes>
+              {genres.map((g) => {
+                return <p key={g}>{g.toLowerCase()}</p>;
+              })}
+            </ShortView_gernes>
+          </ShortView_letters>
+        </ShortView>
+      </Link>
+    </MovieBlock>
+  );
+};
+
+export default Movie;
+
 const MovieBlock = styled.div`
   display: flex;
   border-radius: 1%;
@@ -65,35 +97,3 @@ const ShortView_gernes = styled.div`
     }
   }
 `;
-
-const Movie = ({ item }) => {
-  const genres = item.genres.slice(0, item.genres.length);
-
-  return (
-    <MovieBlock>
-      <Link to={`/about/${item.id}`} style={{ textDecoration: "none" }}>
-        <ShortView>
-          <ShortView_img>
-            <img src={item.medium_cover_image} url={item.url}></img>
-          </ShortView_img>
-          <ShortView_letters>
-            <h2>{item.title}</h2>
-            <p>rating : {item.rating} / 10</p>
-            <p>
-              {item.summary.length > 100
-                ? `${item.summary.slice(0, 100)}...`
-                : item.summary}
-            </p>
-            <ShortView_gernes>
-              {genres.map((g) => {
-                return <p key={g}>{g.toLowerCase()}</p>;
-              })}
-            </ShortView_gernes>
-          </ShortView_letters>
-        </ShortView>
-      </Link>
-    </MovieBlock>
-  );
-};
-
-export default Movie;

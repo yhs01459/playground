@@ -56,24 +56,44 @@ const Home = () => {
         ) : (
           <>
             <HomeBlock>
-              <h2>별점 순</h2>
-              <Slider {...settings}>
-                {topRatingMovies.map((item) => {
-                  return <Thumbnail key={item.id} item={item}></Thumbnail>;
-                })}
-              </Slider>
-              <h2>이름 순</h2>
-              <Slider {...settings}>
-                {titleMovies.map((item) => {
-                  return <Thumbnail key={item.id} item={item}></Thumbnail>;
-                })}
-              </Slider>
-              <h2>좋아요 많은 순</h2>
-              <Slider {...settings}>
-                {popularMovies.map((item) => {
-                  return <Thumbnail key={item.id} item={item}></Thumbnail>;
-                })}
-              </Slider>
+              <div className="home-box">
+                <div className="home-row">
+                  <h3>별점 순</h3>
+                  <div className="slider-box">
+                    <Slider {...settings}>
+                      {topRatingMovies.map((item) => {
+                        return (
+                          <Thumbnail key={item.id} item={item}></Thumbnail>
+                        );
+                      })}
+                    </Slider>
+                  </div>
+                </div>
+                <div className="hone-row">
+                  <h3>이름 순</h3>
+                  <div className="slider-box">
+                    <Slider {...settings}>
+                      {titleMovies.map((item) => {
+                        return (
+                          <Thumbnail key={item.id} item={item}></Thumbnail>
+                        );
+                      })}
+                    </Slider>
+                  </div>
+                </div>
+                <div className="hone-row">
+                  <h3>좋아요 많은 순</h3>
+                  <div className="slider-box">
+                    <Slider {...settings}>
+                      {popularMovies.map((item) => {
+                        return (
+                          <Thumbnail key={item.id} item={item}></Thumbnail>
+                        );
+                      })}
+                    </Slider>
+                  </div>
+                </div>
+              </div>
             </HomeBlock>
           </>
         )}
@@ -85,15 +105,42 @@ const Home = () => {
 export default Home;
 
 const HomeBlock = styled.div`
-  box-sizing: border-box;
-  padding-bottom: 3rem;
-  width: 1600px;
-  margin: 0 auto;
-
-  @media screen and (max-width: 2100px) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: 320px;
+  padding-left: 2rem;
+  .home-box {
+    box-sizing: border-box;
+    max-width: 1024px;
+    width: 100vw;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .home-row {
     width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    height: 400px;
+  }
+  .slider-box {
+    .slides .slick-prev {
+      background-color: black;
+      position: absolute;
+      left: 2%;
+      z-index: 3;
+    }
+    .slides .slick-next {
+      background-color: black;
+      position: absolute;
+      right: 2%;
+      z-index: 3;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .home-box {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -101,6 +148,45 @@ const settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 8,
-  slidesToScroll: 4,
+  arrows: true,
+  slidesToShow: 6,
+  slidesToScroll: 1,
+  className: "slides",
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 720,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 320,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };

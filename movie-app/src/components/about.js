@@ -3,7 +3,7 @@ import styled from "styled-components";
 const About = ({ item }) => {
   return (
     <AboutBlock background={item.background_image}>
-      <Show>
+      <AboutBox>
         <ShortView>
           <ShortView_img>
             <img src={item.medium_cover_image}></img>
@@ -20,7 +20,7 @@ const About = ({ item }) => {
         </ShortView>
 
         <div className="Description">{item.description_full}</div>
-      </Show>
+      </AboutBox>
     </AboutBlock>
   );
 };
@@ -38,7 +38,7 @@ const AboutBlock = styled.div`
   background-size: cover;
 `;
 
-const Show = styled.div`
+const AboutBox = styled.div`
   position: absolute;
   border: 1rem solid black;
   top: 25%;

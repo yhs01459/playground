@@ -3,11 +3,13 @@ import Home from "./pages/Home";
 import Abouts from "./pages/Abouts";
 import MovieList from "./pages/MovieList";
 import Categories from "./components/Categories";
+import Banner from "./components/banner";
 
 const App = () => {
   return (
     <>
       <Categories />
+      <Banner />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/about/:id" element={<Abouts />}></Route>

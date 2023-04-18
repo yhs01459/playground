@@ -5,15 +5,6 @@ import styled from "styled-components";
 import { useState } from "react";
 import Load from "../components/load";
 
-const MovieListPageBox = styled.div`
-  position: absolute;
-  left: 15%;
-  top: 25%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 5rem;
-`;
-
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -39,11 +30,11 @@ const MovieList = () => {
         {loading ? (
           <Load />
         ) : (
-          <MovieListPageBox>
+          <MovieListBlock>
             {movies.map((item) => {
               return <Movie item={item} key={item.id}></Movie>;
             })}
-          </MovieListPageBox>
+          </MovieListBlock>
         )}
       </div>
     </>
@@ -51,3 +42,12 @@ const MovieList = () => {
 };
 
 export default MovieList;
+
+const MovieListBlock = styled.div`
+  position: absolute;
+  left: 15%;
+  top: 25%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5rem;
+`;
