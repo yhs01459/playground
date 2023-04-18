@@ -31,9 +31,11 @@ const MovieList = () => {
           <Load />
         ) : (
           <MovieListBlock>
-            {movies.map((item) => {
-              return <Movie item={item} key={item.id}></Movie>;
-            })}
+            <MovieListBox>
+              {movies.map((item) => {
+                return <Movie item={item} key={item.id}></Movie>;
+              })}
+            </MovieListBox>
           </MovieListBlock>
         )}
       </div>
@@ -44,10 +46,26 @@ const MovieList = () => {
 export default MovieList;
 
 const MovieListBlock = styled.div`
-  position: absolute;
-  left: 15%;
-  top: 25%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+`;
+const MovieListBox = styled.div`
+  max-width: 1024px;
+  width: 100vw;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 5rem;
+  margin-top: 5rem;
+
+  @media screen and (max-width: 800px) {
+    & {
+      display: grid;
+      grid-template-columns: 1fr;
+      min-width: 320px;
+      width: 80%;
+    }
+  }
 `;

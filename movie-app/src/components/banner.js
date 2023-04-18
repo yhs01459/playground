@@ -33,6 +33,8 @@ const BannerBox = styled.div`
   min-width: 320px;
   max-width: 1024px;
   box-sizing: border-box;
+
+  width: 100vw;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -40,11 +42,11 @@ const BannerBox = styled.div`
 
 const settings = {
   dots: false,
+  arrows: false,
   infinite: true,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
   speed: 1000,
   autoplaySpeed: 2000,
-  cssEase: "linear",
 };

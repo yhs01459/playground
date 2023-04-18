@@ -124,13 +124,11 @@ const HomeBlock = styled.div`
   }
   .slider-box {
     .slides .slick-prev {
-      background-color: black;
       position: absolute;
       left: 2%;
       z-index: 3;
     }
     .slides .slick-next {
-      background-color: black;
       position: absolute;
       right: 2%;
       z-index: 3;
