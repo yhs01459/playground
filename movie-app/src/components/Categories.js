@@ -77,12 +77,11 @@ const Categories = () => {
         <div className="list-item-btn">
           <button onClick={switchOff}>x</button>
         </div>
-        <div className="list-item-home">
+        {/* <div className="list-item-home"></div> */}
+        <div className="list-item-categories">
           <Link to={"/"} style={{ textDecoration: "none" }} onClick={switchOff}>
             홈
           </Link>
-        </div>
-        <div className="list-item-categories">
           {category.map((c) => {
             return (
               <MenuCategory
@@ -176,9 +175,11 @@ const MenuList = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  overflow-y:scroll;
   background-color: white;
   padding-left: 2rem;
   .list-item-btn {
+    margin-top:1rem;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -191,20 +192,12 @@ const MenuList = styled.div`
       background-color: white;
     }
   }
-  .list-item-home {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    height: 10%;
-    width: 100%;
-    font-size: 2rem;
-    box-sizing: border-box;
-  }
+  
   .list-item-categories {
+    margin-top:2rem;
     font-size: 2rem;
     width: 100%;
     height: 70%;
-
     box-sizing: border-box;
   }`}
 `;
@@ -225,7 +218,7 @@ const MenuCategory = styled(NavLink)`
   display: flex;
   align-items: center;
   text-decoration: none;
-
+  margin-top: 1rem;
   &:hover {
     color: #495057;
   }
@@ -234,6 +227,6 @@ const MenuCategory = styled(NavLink)`
     text-decoration-line: underline;
   }
   & + & {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 `;
