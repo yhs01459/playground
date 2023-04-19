@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 const category = [
   {
@@ -26,12 +27,25 @@ const category = [
 ];
 
 const Categories = () => {
+  const [toggle, setToggle] = useState(false);
+
+  const switchOn = () => {
+    setToggle(true);
+  };
+  const switchOff = () => {
+    console.log("스위치 off");
+    setToggle(false);
+  };
+  useEffect(() => {
+    setToggle(false);
+  }, []);
+
   return (
     <CategoriesBlock>
-      <CategoriesList>
+      <CategoriesList toggle={toggle}>
         <div className="categories-home">
           <Link to={"/"} style={{ textDecoration: "none" }}>
-            홈{" "}
+            홈
           </Link>
         </div>
         <div className="categories-categories">
@@ -47,10 +61,42 @@ const Categories = () => {
             );
           })}
         </div>
-        <div className="categories-menu">
-          <button>&#9776;</button>
-        </div>
       </CategoriesList>
+      <MoblieCategoriesList>
+        <div className="m-categories-menu-btn">
+          <button onClick={switchOn}>&#9776;</button>
+        </div>
+        <div className="m-categories-home">
+          <Link to={"/"} style={{ textDecoration: "none" }}>
+            홈
+          </Link>
+        </div>
+        <div></div>
+      </MoblieCategoriesList>
+      <MenuList toggle={toggle}>
+        <div className="list-item-btn">
+          <button onClick={switchOff}>x</button>
+        </div>
+        <div className="list-item-home">
+          <Link to={"/"} style={{ textDecoration: "none" }} onClick={switchOff}>
+            홈
+          </Link>
+        </div>
+        <div className="list-item-categories">
+          {category.map((c) => {
+            return (
+              <MenuCategory
+                key={c.name}
+                className={({ isActive }) => (isActive ? "active" : undefined)}
+                to={`${c.name}`}
+                onClick={switchOff}
+              >
+                {c.text}
+              </MenuCategory>
+            );
+          })}
+        </div>
+      </MenuList>
     </CategoriesBlock>
   );
 };
@@ -69,6 +115,7 @@ const CategoriesBlock = styled.div`
 const CategoriesList = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin: 0;
   height: 100%;
   width: 100vw;
@@ -81,29 +128,86 @@ const CategoriesList = styled.div`
   .categories-categories {
     display: flex;
     justify-content: space-between;
-    width: 70%;
+
+    width: 80%;
   }
-  .categories-menu {
-    display: flex;
-    justify-content: end;
-    width: 10%;
-    padding-right: 2rem;
-  }
+
   @media screen and (max-width: 800px) {
     & {
-      justify-content: space-between;
-    }
-    .categories-home {
-    }
-    .categories-categories {
       display: none;
-    }
-    .categories-Menu {
-      visibility: visible;
     }
   }
 `;
+const MoblieCategoriesList = styled.div`
+  display: none;
+  @media screen and (max-width: 800px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    height: 100%;
+    width: 100vw;
+    max-width: 1024px;
+    box-sizing: border-box;
+    button {
+      border: none;
+      background-color: inherit;
+    }
+    .m-categories-menu {
+      width: 2rem;
+    }
+    .m-categories-home {
+      width: 2rem;
+    }
+    .m-categories-end {
+      width: 2rem;
+    }
+  }
+`;
+const MenuList = styled.div`
+  display: none;
+  ${(props) =>
+    props.toggle &&
+    ` z-index: 4;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  padding-left: 2rem;
+  .list-item-btn {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 10%;
+    box-sizing: border-box;
+    button {
+      font-size: 2rem;
+      border: none;
+      background-color: white;
+    }
+  }
+  .list-item-home {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 10%;
+    width: 100%;
+    font-size: 2rem;
+    box-sizing: border-box;
+  }
+  .list-item-categories {
+    font-size: 2rem;
+    width: 100%;
+    height: 70%;
 
+    box-sizing: border-box;
+  }`}
+`;
 const Category = styled(NavLink)`
   display: flex;
   align-items: center;
@@ -116,7 +220,20 @@ const Category = styled(NavLink)`
     font-weight: 800;
     text-decoration-line: underline;
   }
+`;
+const MenuCategory = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  &:hover {
+    color: #495057;
+  }
+  &.active {
+    font-weight: 800;
+    text-decoration-line: underline;
+  }
   & + & {
-    margin-left: 3rem;
+    margin-top: 2rem;
   }
 `;
